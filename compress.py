@@ -10,6 +10,7 @@ from PIL import Image
 import numpy as np
 from numpy import linalg as LA
 from matplotlib import pyplot as plt
+from matplotlib.image import imsave
 
 
 class Compressor:
@@ -229,6 +230,7 @@ class Compressor:
 
 
 if __name__ == '__main__':
-    compressor = Compressor("images/lion.png", 100)
+    compressor = Compressor("images/lion.png", 400)
     compressor.start()
-    compressor.show()
+    # compressor.show()
+    imsave('images/lion400.png', compressor.final.astype(np.uint8))
