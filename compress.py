@@ -13,7 +13,7 @@ from matplotlib import pyplot as plt
 from matplotlib.image import imsave
 
 
-class Compressor:
+class LinearPress:
 
     def __init__(self, image_dir, eigenvalues_to_keep=None):
         self.image_dir = image_dir  # Image Directory
@@ -336,7 +336,7 @@ class Compressor:
 
 
 if __name__ == '__main__':
-    to_keep = 100
-    compressor = Compressor("images/lionrgb.jpeg", to_keep)
+    to_keep = 20
+    compressor = LinearPress("images/rgb.png", to_keep)
     compressor.start()
     compressor.show()
