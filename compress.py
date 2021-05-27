@@ -103,6 +103,95 @@ class Compressor:
         return A, B
 
     '''
+    This function is the main process of the entire compressor class for an RGB image
+    '''
+
+    def process3D(self):
+        # The columns and rows for the original shape
+        or_cols = self.single_val_array[0].shape[1]
+        or_rows = self.single_val_array[0].shape[0]
+
+        # columns and rows for the new shape
+        cols = self.single_val_array[0].shape[1]
+        rows = self.single_val_array[0].shape[0]
+
+        # Checking if it is vertical
+        if rows > cols:
+            for i in range(3):
+                self.single_val_array[i] = self.single_val_array[i].T
+            cols = self.single_val_array[0].shape[1]
+            rows = self.single_val_array[0].shape[0]
+            self.rotate = True
+
+        self.rgb = []
+
+        for j in range(3):
+
+            # Calculating A^T * A
+            A_TA = np.matmul(
+                self.single_val_array[j].T, self.single_val_array[j])
+
+            # Find the eigenvalues and eigenvectors
+            eigval_ATA, eigvec_ATA = LA.eig(A_TA)
+
+            # Conduct Gram schmidt process
+            eigvec_ATA = self.gram_schmidt(eigvec_ATA.T)
+
+            # Sort the values
+            eigval_ATA, eigvec_ATA = self.same_sort(eigval_ATA, eigvec_ATA)
+
+            # initiate the U matrix
+            U = []
+            for i in range(rows):
+                temp = np.matmul(self.single_val_array[j], eigvec_ATA[i])
+                temp = temp/np.sqrt(eigval_ATA[i])
+                U.append(temp)
+
+            U = np.array(U)
+
+            # Find the single values of the Sigma matrix
+            for x in range(min(cols, rows)):
+                try:
+                    eigval_ATA[x] = np.sqrt(
+                        eigval_ATA[x]) if eigval_ATA[x] >= 0 else eigval_ATA[x]
+                except:
+                    pass
+
+            # Discard extra eigenvalues if necessary
+            if(self.eigenvalues_to_keep < min(cols, rows)):
+                for x in range(min(cols, rows)):
+                    if x > self.eigenvalues_to_keep:
+                        eigval_ATA[x] = 0
+
+            # Instantiiate Sigma array
+            Sigma = np.zeros((rows, cols))
+
+            # Create Diagnal Sigma array with single values
+            for x in range(min(cols, rows)):
+                Sigma[x][x] = eigval_ATA[x]
+
+            # Calculate the final vector matrix
+            final_image = np.matmul(np.matmul(U.T, Sigma), eigvec_ATA)
+            final_image = final_image.astype(np.int64)
+
+            # Rotate if necessary
+            if self.rotate:
+                final_image = final_image.T
+
+            self.rgb.append(final_image)
+
+        # Create image matrix
+        self.final = []
+        for y in range(or_rows):
+            mid = []
+            for x in range(or_cols):
+                mid.append([self.rgb[c][y][x] for c in range(3)])
+            self.final.append(mid)
+
+        # Convert matrix to array
+        self.final = np.array(self.final)
+
+    '''
     This function is the main process of the entire compressor class
     '''
 
@@ -123,7 +212,7 @@ class Compressor:
             rows = self.single_val_array.shape[0]
             self.rotate = True
 
-        # Calculating A^T * A
+            # Calculating A^T * A
         A_TA = np.matmul(self.single_val_array.T, self.single_val_array)
 
         # Find the eigenvalues and eigenvectors
@@ -212,24 +301,41 @@ class Compressor:
         width = self.image.shape[0]
         height = self.image.shape[1]
 
-        # Instantiate the single value array
-        self.single_val_array = np.array([[0 for y in range(height)]
-                                          for x in range(width)])
+        if len(self.image.shape) == 2:
 
-        # Set each value in the single value array to the average of the 3 RGB values in the image array
-        for x in range(width):
-            for y in range(height):
-                self.single_val_array[x][y] = sum(self.image[x][y]) // 3
+            self.single_val_array = np.array([[[0 for y in range(height)]
+                                               for x in range(width)]for i in range(3)])
+            for x in range(width):
+                for y in range(height):
+                    self.single_val_array[x][y] = self.image[x][y]
 
-        # convert it into an array
-        self.single_val_array = np.array(
-            self.single_val_array).astype(np.float64)
+            self.single_val_array = np.array(
+                self.single_val_array).astype(np.float64)
 
-        # Start the process
-        self.process()
+            # Start the process
+            self.process()
+
+        else:
+
+            # Instantiate the single value array
+            self.single_val_array = np.array([[[0 for y in range(height)]
+                                               for x in range(width)]for i in range(3)])
+
+            # Set each value in the single value array to the average of the 3 RGB values in the image array
+            for i in range(3):
+                for x in range(width):
+                    for y in range(height):
+                        self.single_val_array[i][x][y] = self.image[x][y][i]
+
+            # convert it into an array
+            self.single_val_array = np.array(
+                self.single_val_array).astype(np.float64)
+
+            # Start the process
+            self.process3D()
 
 
 if __name__ == '__main__':
-    compressor = Compressor("images/lion.png", 50)
+    compressor = Compressor("images/rgbyesy.png", 20)
     compressor.start()
     compressor.show()
