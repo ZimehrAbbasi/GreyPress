@@ -2,7 +2,7 @@
 #
 # @author: Zimehr Abbasi
 # @date: 2021
-# A basic compressor which uses singular value decomposition to compress greyscale image files
+# A basic compressor which uses singular value decomposition to compress image files
 #
 ##
 
