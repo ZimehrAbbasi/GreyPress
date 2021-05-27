@@ -1,4 +1,4 @@
-# Compresser
+# GreyPress
 
 This program takes in an image and compresses it in the same extension. Using Single Value Decomposition(SVD) and the Gram-Schmidt Algorithm, this program is able to reduce the final size in a few seconds.
 
