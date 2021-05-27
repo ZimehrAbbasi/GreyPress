@@ -279,10 +279,10 @@ class Compressor:
 
     def show(self):
 
-        plt.figure()
-
         # Create 2 subplots, for the original and for the compressed
         f, axarr = plt.subplots(2, 1)
+        f.set_figheight(8)
+        f.set_figwidth(8)
         axarr[0].set_title("Un-Compressed")
         axarr[0].imshow(self.image, interpolation='nearest')
         axarr[1].set_title("Compressed")
@@ -336,6 +336,7 @@ class Compressor:
 
 
 if __name__ == '__main__':
-    compressor = Compressor("images/rgbyesy.png", 20)
+    to_keep = 100
+    compressor = Compressor("images/rgb.png", to_keep)
     compressor.start()
     compressor.show()
