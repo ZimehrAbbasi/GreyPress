@@ -8,6 +8,8 @@ The inputs to this program are a `file directory` (absolute or relative path), a
 
 ### Sample output
 
+These are sample outputs of an RGB image for various `decomposition percentage`s.
+
 <img src="images/rgb.png" width=300 align=right>
 
 | DP  |                        Image                        |
