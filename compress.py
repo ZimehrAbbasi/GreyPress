@@ -4,6 +4,16 @@ from numpy import linalg as LA
 from matplotlib import pyplot as plt
 
 
+class Compressor:
+
+    def __init__(self, image_dir, eigenvectors=None):
+        self.image_dir = image_dir
+        self.eigenvectors = eigenvectors
+
+    def start(self):
+        image = np.asarray(Image.open(self.image_dir))
+
+
 def mult(v1, v2):
 
     if(np.dot(v2, v2) == 0):
@@ -37,7 +47,7 @@ def same_sort(A, B):
     return A, B
 
 
-image = Image.open('images/svdtest.png')
+image = Image.open('images/heart.jpeg')
 data = np.asarray(image)
 
 width = data.shape[0]
@@ -50,11 +60,19 @@ for x in range(width):
     for y in range(height):
         image_single[x][y] = sum(data[x][y])//3
 
-
-print(image_single)
 image_single = np.array(image_single).astype(np.float64)
+rotate = False
+or_cols = image_single.shape[1]
+or_rows = image_single.shape[0]
 cols = image_single.shape[1]
 rows = image_single.shape[0]
+
+if rows > cols:
+    image_single = image_single.T
+    cols = image_single.shape[1]
+    rows = image_single.shape[0]
+    rotate = True
+
 # STEPS
 # 1: Find A.T*A and A*A.T
 
@@ -74,7 +92,7 @@ eigval_ATA, eigvec_ATA = same_sort(eigval_ATA, eigvec_ATA)
 
 print("Finding U")
 U = []
-for i in range(len(eigvec_ATA)):
+for i in range(rows):
     temp = np.matmul(image_single, eigvec_ATA[i])
     temp = temp/np.sqrt(eigval_ATA[i])
     U.append(temp)
@@ -107,14 +125,17 @@ Sigma = np.zeros((rows, cols))
 for x in range(min(cols, rows)):
     Sigma[x][x] = eigval_ATA[x]
 
-
+print(U.T.shape, Sigma.shape, eigvec_ATA.shape)
 final_image = np.matmul(np.matmul(U.T, Sigma), eigvec_ATA)
 final_image = final_image.astype(np.int64)
 
+if rotate:
+    final_image = final_image.T
+
 final = []
-for y in range(rows):
+for y in range(or_rows):
     mid = []
-    for x in range(cols):
+    for x in range(or_cols):
         mid.append([final_image[y][x] for c in range(3)])
     final.append(mid)
 
