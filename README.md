@@ -6,12 +6,12 @@ This program takes in an image and compresses it in the same extension. Using Si
 
 The inputs to this program are a `file directory` (absolute or relative path), and a `decomposition percentage`(DP) which is basically how high you want the resolution to be.
 
-#### Samples
+### Sample output
 
 <img src="images/rgb.png" width=300 align=right>
 
-| DP  |         Image          |
-| :-: | :--------------------: |
+| DP  |                        Image                        |
+| :-: | :-------------------------------------------------: |
 |  1  |  <img src="images/rgb1.png" width=300 align=right>  |
 |  5  |  <img src="images/rgb5.png" width=300 align=right>  |
 | 10  | <img src="images/rgb10.png" width=300 align=right>  |
