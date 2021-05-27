@@ -230,7 +230,6 @@ class Compressor:
 
 
 if __name__ == '__main__':
-    compressor = Compressor("images/lion.png", 400)
+    compressor = Compressor("images/lion.png", 50)
     compressor.start()
-    # compressor.show()
-    imsave('images/lion400.png', compressor.final.astype(np.uint8))
+    compressor.show()
