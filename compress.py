@@ -37,7 +37,7 @@ def same_sort(A, B):
     return A, B
 
 
-image = Image.open('svdtest.png')
+image = Image.open('images/svdtest.png')
 data = np.asarray(image)
 
 width = data.shape[0]
