@@ -336,7 +336,7 @@ class Compressor:
 
 
 if __name__ == '__main__':
-    to_keep = 30
+    to_keep = 100
     compressor = Compressor("images/lionrgb.jpeg", to_keep)
     compressor.start()
     compressor.show()
