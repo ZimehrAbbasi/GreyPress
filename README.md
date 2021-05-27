@@ -12,9 +12,9 @@ The inputs to this program are a `file directory` (absolute or relative path), a
 
 | DP  |         Image          |
 | :-: | :--------------------: |
-|  1  |  ![](images/rgb1.png)  |
-|  5  |  ![](images/rgb5.png)  |
-| 10  | ![](images/rgb10.png)  |
-| 25  | ![](images/rgb25.png)  |
-| 50  | ![](images/rgb50.png)  |
-| 100 | ![](images/rgb100.png) |
+|  1  |  <img src="images/rgb1.png" width=300 align=right>  |
+|  5  |  <img src="images/rgb5.png" width=300 align=right>  |
+| 10  | <img src="images/rgb10.png" width=300 align=right>  |
+| 25  | <img src="images/rgb25.png" width=300 align=right>  |
+| 50  | <img src="images/rgb50.png" width=300 align=right>  |
+| 100 | <img src="images/rgb100.png" width=300 align=right> |
