@@ -8,7 +8,7 @@ The inputs to this program are a `file directory` (absolute or relative path), a
 
 #### Samples
 
-![Original image](images/rgb.png)
+<img src="images/rgb.png" width=300 align=right>
 
 | DP  |         Image          |
 | :-: | :--------------------: |
