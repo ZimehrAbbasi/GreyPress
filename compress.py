@@ -115,6 +115,12 @@ class LinearPress:
         cols = self.single_val_array[0].shape[1]
         rows = self.single_val_array[0].shape[0]
 
+        if(self.eigenvalues_to_keep > min(cols, rows)):
+            self.eigenvalues_to_keep = min(cols, rows)
+        else:
+            self.eigenvalues_to_keep = int(
+                self.eigenvalues_to_keep / 100 * min(cols, rows))
+
         # Checking if it is vertical
         if rows > cols:
             for i in range(3):
@@ -204,6 +210,12 @@ class LinearPress:
         # columns and rows for the new shape
         cols = self.single_val_array.shape[1]
         rows = self.single_val_array.shape[0]
+
+        if(self.eigenvalues_to_keep > min(cols, rows)):
+            self.eigenvalues_to_keep = min(cols, rows)
+        else:
+            self.eigenvalues_to_keep = int(
+                self.eigenvalues_to_keep / 100 * min(cols, rows))
 
         # Checking if it is vertical
         if rows > cols:
@@ -336,7 +348,7 @@ class LinearPress:
 
 
 if __name__ == '__main__':
-    to_keep = 25
+    to_keep = 2
     compressor = LinearPress("images/rgb.png", to_keep)
     compressor.start()
     compressor.show()
