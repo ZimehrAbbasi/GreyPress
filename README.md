@@ -22,3 +22,7 @@ These are sample outputs of an RGB image for various `resolution percentage's`.
 |       19.53125%       |     100     | <img src="images/rgb100.png" width=300 align=right> |
 |       39.0625%        |     200     | <img src="images/rgb200.png" width=300 align=right> |
 |         100%          |     512     | <img src="images/rgb512.png" width=300 align=right> |
+
+### Evaluation
+
+After viewing the images above one cannot tell the slightest difference between the last 2 images even though one is 40% the resolution of the next. This shows us that images can be compressed by a large margin without affecting the quality too much. The next step in the development of this program is too add machine learning capabilities to determine the ideal cutoff for the eigenvalues to use for the compressed image so that the quality is not affected.
