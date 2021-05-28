@@ -348,7 +348,7 @@ class LinearPress:
 
 
 if __name__ == '__main__':
-    to_keep = 2
+    to_keep = 39.0625
     compressor = LinearPress("images/rgb.png", to_keep)
     compressor.start()
     compressor.show()
