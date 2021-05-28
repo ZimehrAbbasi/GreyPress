@@ -348,7 +348,10 @@ class LinearPress:
 
 
 if __name__ == '__main__':
-    to_keep = 39.0625
+    to_keep = 50
     compressor = LinearPress("images/rgb.png", to_keep)
     compressor.start()
     compressor.show()
+    print(compressor.final)
+    im = Image.fromarray(np.uint8(compressor.final))
+    im.save('../testimages/test.png')
