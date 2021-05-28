@@ -10,6 +10,8 @@ The inputs to this program are a `file directory` (absolute or relative path), a
 
 These are sample outputs of an RGB image for various `resolution percentage's`.
 
+![image](images/rgb512.png){: style="float: left"}
+
 | Resolution Percentage | Eigenvalues |                        Image                        |
 | :-------------------: | :---------: | :-------------------------------------------------: |
 |      0.1953125%       |      1      |  <img src="images/rgb1.png" width=300 align=right>  |
@@ -19,4 +21,4 @@ These are sample outputs of an RGB image for various `resolution percentage's`.
 |       9.765625%       |     50      | <img src="images/rgb50.png" width=300 align=right>  |
 |       19.53125%       |     100     | <img src="images/rgb100.png" width=300 align=right> |
 |       39.0625%        |     200     | <img src="images/rgb200.png" width=300 align=right> |
-|         100%          |     512     |  <img src="images/rgb.png" width=300 align=right>   |
+|         100%          |     512     | <img src="images/rgb512.png" width=300 align=right> |
