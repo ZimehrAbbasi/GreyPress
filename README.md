@@ -20,3 +20,4 @@ These are sample outputs of an RGB image for various `resolution percentage's`.
 |      4.8828125%       |     25      | <img src="images/rgb25.png" width=300 align=right>  |
 |       9.765625%       |     50      | <img src="images/rgb50.png" width=300 align=right>  |
 |       19.53125%       |     100     | <img src="images/rgb100.png" width=300 align=right> |
+|       39.0625%        |     200     | <img src="images/rgb200.png" width=300 align=right> |
