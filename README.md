@@ -12,11 +12,11 @@ These are sample outputs of an RGB image for various `decomposition percentage`s
 
 <img src="images/rgb.png" width=300 align=right>
 
-| RP  |                        Image                        |
-| :-: | :-------------------------------------------------: |
-|  1  |  <img src="images/rgb1.png" width=300 align=right>  |
-|  5  |  <img src="images/rgb5.png" width=300 align=right>  |
-| 10  | <img src="images/rgb10.png" width=300 align=right>  |
-| 25  | <img src="images/rgb25.png" width=300 align=right>  |
-| 50  | <img src="images/rgb50.png" width=300 align=right>  |
-| 100 | <img src="images/rgb100.png" width=300 align=right> |
+| Resolution Percentage | Eigenvalues |                        Image                        |
+| :-------------------: | :---------: | :-------------------------------------------------: |
+|      0.1953125%       |      1      |  <img src="images/rgb1.png" width=300 align=right>  |
+|      0.9765625%       |      5      |  <img src="images/rgb5.png" width=300 align=right>  |
+|       1.953125%       |     10      | <img src="images/rgb10.png" width=300 align=right>  |
+|      4.8828125%       |     25      | <img src="images/rgb25.png" width=300 align=right>  |
+|       9.765625%       |     50      | <img src="images/rgb50.png" width=300 align=right>  |
+|       19.53125%       |     100     | <img src="images/rgb100.png" width=300 align=right> |
