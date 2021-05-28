@@ -10,7 +10,7 @@ The inputs to this program are a `file directory` (absolute or relative path), a
 
 These are sample outputs of an RGB image for various `resolution percentage's`.
 
-![image](images/rgb512.png){: style="float: left"}
+<img src="images/rgb.png" width=300 align=right>
 
 | Resolution Percentage | Eigenvalues |                        Image                        |
 | :-------------------: | :---------: | :-------------------------------------------------: |
