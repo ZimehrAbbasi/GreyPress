@@ -24,4 +24,4 @@ These are sample outputs of an RGB image for various `resolution percentage's`.
 
 ### Evaluation
 
-After viewing the images above one cannot tell the slightest difference between the last 2 images even though one is 50% the resolution of the next. This shows us that images can be compressed by a large margin without affecting the quality too much. The next step in the development of this program is too add machine learning capabilities to determine the ideal cutoff for the eigenvalues to use for the compressed image so that the quality is not affected.
+After viewing the images above one cannot tell the slightest difference between the last 2 images even though one is 50% the resolution of the next. This shows us that images can be compressed by a large margin without affecting the quality too much. The next step in the development of this program is too add machine learning capabilities to determine the ideal cutoff for the eigenvalues to use for the compressed image so that the quality does not seem affected (to the human eye).
